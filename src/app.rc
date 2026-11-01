@@ -1,0 +1,24 @@
+#include <windows.h>
+#include "version.h"
+1 RT_MANIFEST "app.manifest"
+101 ICON "airconnect.ico"
+1 VERSIONINFO
+FILEVERSION AC_VERSION_NUM
+PRODUCTVERSION AC_VERSION_NUM
+FILETYPE VFT_APP
+BEGIN
+ BLOCK "StringFileInfo"
+ BEGIN
+  BLOCK "040904B0"
+  BEGIN
+   VALUE "FileDescription", "AirConnect native AirPlay receiver\0"
+   VALUE "ProductName", "AirConnect\0"
+   VALUE "FileVersion", AC_VERSION "\0"
+   VALUE "LegalCopyright", "GPL-3.0; includes AirPlay-Windows contributors\0"
+  END
+ END
+ BLOCK "VarFileInfo"
+ BEGIN
+  VALUE "Translation", 0x409, 1200
+ END
+END

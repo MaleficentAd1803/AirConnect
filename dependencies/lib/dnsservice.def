@@ -1,0 +1,8 @@
+LIBRARY DNSAPI.dll
+EXPORTS
+DnsServiceRegister
+DnsServiceDeRegister
+DnsServiceRegisterCancel
+DnsServiceFreeInstance
+DnsServiceResolve
+DnsServiceResolveCancel

@@ -1,0 +1,10 @@
+build/
+dist/
+dependencies/runtime/
+*.log
+*.key
+test-data/
+media-test-output/
+dependencies/lib/*.a
+setup.inf
+setup.rpt
