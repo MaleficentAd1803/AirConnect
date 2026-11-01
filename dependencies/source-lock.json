@@ -1,0 +1,47 @@
+[
+  {
+    "Name": "FFmpeg",
+    "Version": "7.1.1",
+    "Uri": "https://github.com/FFmpeg/FFmpeg.git",
+    "Hash": "db69d06eeeab4f46da15030a80d539efb4503ca8",
+    "download_url": "https://api.github.com/repos/FFmpeg/FFmpeg/tarball/db69d06eeeab4f46da15030a80d539efb4503ca8",
+    "filename": "FFmpeg-7.1.1.tar.gz",
+    "sha256": "8ed083893fa8064330b7743e98b2489a56fea30b1383486a83b61c218d8ecc9c"
+  },
+  {
+    "Name": "nv-codec-headers",
+    "Version": "12.2.72.0",
+    "Uri": "https://github.com/FFmpeg/nv-codec-headers.git",
+    "Hash": "c69278340ab1d5559c7d7bf0edf615dc33ddbba7",
+    "download_url": "https://api.github.com/repos/FFmpeg/nv-codec-headers/tarball/c69278340ab1d5559c7d7bf0edf615dc33ddbba7",
+    "filename": "nv-codec-headers-12.2.72.0.tar.gz",
+    "sha256": "423a6ede7adaa1a235e607180ed3f94c0130edf57f81d51b136281c480689fcc"
+  },
+  {
+    "Name": "openssl",
+    "Version": "3.5.5",
+    "Uri": "https://github.com/openssl/openssl",
+    "Hash": "openssl-3.5.5",
+    "download_url": "https://github.com/openssl/openssl/releases/download/openssl-3.5.5/openssl-3.5.5.tar.gz",
+    "filename": "openssl-3.5.5.tar.gz",
+    "expected_sha256": "b28c91532a8b65a1f983b4c28b7488174e4a01008e29ce8e69bd789f28bc2a89",
+    "sha256": "b28c91532a8b65a1f983b4c28b7488174e4a01008e29ce8e69bd789f28bc2a89"
+  },
+  {
+    "Name": "x264",
+    "Version": "r3106",
+    "Uri": "https://github.com/mirror/x264.git",
+    "Hash": "eaa68fad9e5d201d42fde51665f2d137ae96baf0",
+    "download_url": "https://api.github.com/repos/mirror/x264/tarball/eaa68fad9e5d201d42fde51665f2d137ae96baf0",
+    "filename": "x264-r3106.tar.gz",
+    "sha256": "a04f7dc51085309dedbebf311ff7686230475d03f75aa7ab9363eeb8caf3fac8"
+  },
+  {
+    "Name": "OpenSSL Windows build recipes",
+    "Version": "3.5.5-1",
+    "Hash": "f9f356a49d27d5d48571605ec8a343b779d22cbc",
+    "download_url": "https://api.github.com/repos/git-for-windows/MINGW-packages/zipball/f9f356a49d27d5d48571605ec8a343b779d22cbc",
+    "filename": "git-for-windows-openssl-build-recipes.zip",
+    "sha256": "b18cf94c98e353ac5ceb6bac6fdd6b3f37f8517abd496e4b6b4ae03326bb4851"
+  }
+]

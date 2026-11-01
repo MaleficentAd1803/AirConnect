@@ -16,8 +16,8 @@ state are the focus. The video lives in a separate quiet viewer.
   stays visible. Main content has no card grid or sidebar navigation.
 - Viewer: picture first, native controls appear on pointer/keyboard activity.
 
-The original unstyled Win32 shell was rejected by the user. The second pass
-must include coherent fonts, control treatment, category icons, hover/focus,
-dark/light surfaces, a real app icon and image-based layout review.
-The user subsequently requested AMOLED dark; it is the new default. Main and
-settings canvases, navigation and supported native title bars use true black.
+Main and settings canvases, navigation and supported native title bars use true
+black in the default AMOLED theme. The viewer has one 38 DIP ellipsis button,
+with an owner-drawn native black popup and standard menu keyboard behavior.
+Controls hide after inactivity. Portrait/landscape client geometry follows the
+incoming picture; normal placements persist and are clamped to visible monitors.

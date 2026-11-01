@@ -11,41 +11,33 @@ The normal AirConnect executable does **not** link SDL2, SDL_ttf, Dear ImGui or
 GStreamer. Entries below describing those components apply to the preserved
 upstream project/reference material.
 
-The actual local FFmpeg DLLs report **GPL version 3 or later**, not LGPL. They
-come from the existing OBS dependency build of FFmpeg n7.1.1, configured with
-`--enable-version3 --enable-gpl --enable-libx264` and other OBS codecs. This
-supersedes the upstream FFmpeg license description below for the supplied
-validation package. Exact configuration and hashes are in the runtime manifest.
+The 0.2.0 release ships a project-built, minimal FFmpeg 7.1.1 runtime under
+GPL-3.0-or-later. x264 is statically included under GPL-2.0-or-later; NV codec
+headers use their supplied MIT-style notice. H.264/HEVC decoding, D3D11 video,
+AAC/ALAC audio and MP4 recording are enabled. There are no OBS codec DLLs,
+Microsoft Visual C++ runtime DLLs, SDL, ImGui or browser components in this build.
 
-OpenSSL reports 3.5.5 and is from the existing Git installation (Apache-2.0).
-The compatibility declaration headers currently originate in OpenSSL 1.1.1w;
-their older OpenSSL/SSLeay notice is included separately. They use opaque handles
-and are validated against the runtime by identity/pair-verify tests. Replace
-them with a matching OpenSSL 3 development package before public release.
+OpenSSL 3.5.5 is dynamically linked under Apache-2.0. Its DLL and matching
+142 SDK headers are pinned to Git for Windows SDK commit
+`d8562a834b61d0111c21a6510788bbedf358719b`; the DLL SHA-256 matches that SDK
+exactly. Corresponding OpenSSL source and the Git for Windows build recipes,
+including patches, accompany each release. The former 1.1.1 header compatibility
+setup has been replaced.
 
-Libplist 2.4.0 is compiled from the supplied source under LGPL-2.1-or-later;
-libcnary's notice is retained in its source. Native tests also reuse fixture
-helpers from the upstream GPL-3.0 GPU tests. The native icon is original geometry.
+Libplist 2.4.0 is built from the included LGPL-2.1-or-later source; libcnary's
+notice remains in its source. nlohmann/json 3.12.0 is MIT licensed and its complete
+single-header source and license are included. The native application icon is
+original geometry. Windows fonts and operating-system libraries are not copied.
 
-Additional runtime components include x264 (GPL), zlib (zlib license), librist
-(BSD), SRT (MPL-2.0) and the Microsoft Visual C++ runtime DLLs. FFmpeg also embeds
-its OBS-configured codec dependencies. Those exact matching sources, build
-recipes, Microsoft redistribution terms and complete component notices have
-**not** yet been assembled/audited for public redistribution. The installer and
-portable archive are local validation artifacts, not a completed public release.
-Do not omit that limitation or treat this document as a redistribution approval.
+Runtime hashes and actual configuration are in `runtime-manifest.json`.
+Versioned source URLs and checksums are in `dependencies/source-lock.json`.
+Each GitHub release supplies both `AirConnect-VERSION-source.zip` and
+`AirConnect-VERSION-dependency-sources.zip`, with the source, build recipes and
+notices for the distributed application and its native libraries. Obtain both at:
+https://github.com/MaleficentAd1803/AirConnect/releases
 
-Relevant source projects:
-- https://github.com/moieric11/AirPlay-Windows
-- https://github.com/FDH2/UxPlay
-- https://github.com/obsproject/obs-deps
-- https://github.com/FFmpeg/FFmpeg/tree/n7.1.1
-- https://github.com/openssl/openssl/tree/openssl-3.5.5
-- https://github.com/libimobiledevice/libplist/tree/2.4.0
-- https://code.videolan.org/videolan/x264
-- https://github.com/Haivision/srt
-- https://code.videolan.org/rist/librist
-- https://zlib.net/
+The application and installer are unsigned. Source availability and supplied
+component notices do not imply Apple certification or DRM-service compatibility.
 
 The upstream notices follow, unchanged apart from this clarification.
 

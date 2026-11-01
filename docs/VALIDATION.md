@@ -31,7 +31,11 @@ is not automatically a tested Apple-device feature. There was no iPhone/iPad.
 | Network changes / sleep | Implemented retry hooks | Physical interruptions, VPNs, name conflicts and sleep/resume untested |
 | Installer / portable | Implemented | Packaging/extraction results recorded after final build; full clean-user interactive installation untested |
 | Windows 10 / other GPUs | Intended support | Not physically tested |
-| Code signing / public redistribution audit | Blocked | No signing certificate; exact dependency-source/license review still required |
+| Source and component notices | Implemented | Pinned minimal FFmpeg/x264 source, matching OpenSSL 3 headers, OpenSSL source/Windows patches and notices accompany the release |
+| Code signing | Unavailable | No signing certificate |
+| Viewer menu / phone-shaped window | Implemented and locally tested | One native owner-drawn menu; portrait/landscape client aspect checks, fullscreen/PiP restore and idle visibility checks pass |
+| Window placement | Implemented and locally tested | Serialized normal position/size round-trip and monitor-bound restoration helper tested |
+| Installed updates | Implemented | Strict version/URL/hash/size/stable-release policy tests pass; live release download and native installer checks recorded below |
 
 Both Debug and Release CTest passed all four suites. Release took 39.70 seconds:
 native-core (0.07 s), transport-lifecycle (14.04 s), audio-clock (10.81 s), and
@@ -55,3 +59,45 @@ AirConnect.exe SHA-256 matched the tested Release executable exactly:
 `d8f871fcf77ef482610091f3fe4a8f649b3920a27291d3b4fbf223a3d8b0375d`.
 The test did not create Start Menu shortcuts, register an uninstaller or alter
 startup settings. Those interactive installation paths remain untested.
+
+## 0.2.0 verification
+
+The minimal media runtime initially exposed missing ALAC test encoding and
+D3D11VA2 options. The build options were corrected; the tests were retained.
+Final Debug and Release builds each passed all five CTest suites: native-core,
+transport-lifecycle, audio-clock, native-media and update-policy. The media suite
+was repeated after the final viewer changes and passed in both configurations.
+It covers CPU/D3D11 H.264 and HEVC changes, MP4 with audio and monotonic timestamps,
+PNG output, actual portrait/landscape client aspect, one-menu control layout,
+fullscreen/PiP restoration, idle hide/reveal, and forced WARP.
+
+The idle test hides its own fixture window and checks the child's actual visible
+style, preventing physical desktop activity from resetting its idle timer. It
+still exercises the application's real timer and pointer-activity handlers.
+D3D11 presentation tests have returned both S_OK and occlusion across runs;
+S_OK is accepted presentation, not a measured physical scan-out guarantee.
+
+App-generated AMOLED About captures were inspected: update status and controls
+fit without clipping. The native automation pipe remains unavailable.
+
+Installer transaction, staged startup/protocol tests and published GitHub asset
+verification are recorded after release assembly.
+
+The native installer transaction test passed: old 0.1.0 extraction, a deliberately
+locked DLL causing replacement failure, restoration of the original executable
+and libraries, a successful upgrade, removal of an obsolete owned x264 DLL, and
+preservation of a personal sentinel file. It did not write uninstall registration
+or alter the installed application. EXE and Setup version resources both report
+0.2.0. The pinned runtime archive and each of its six DLLs passed SHA-256 checks.
+
+The packaged receiver launched and exited with code 0. Both AirPlay and RAOP
+registration/withdrawal callbacks returned status 0, and nine control-size,
+connection-cap and recovery checks passed. The protocol script required an
+additional project-local Python test dependency before its final rerun.
+
+The packaged 0.2.0 executable then passed all 26/26 local pair-setup/pair-verify,
+FairPlay framing and RTSP handshake checks with cryptography 50.0.2 in a
+project-local validation environment. All nine malformed-input/connection-cap
+checks passed again, and the process exited with code 0. The final Release CTest
+run passed all five suites in 42.91 seconds; Debug passed all five suites and the
+latest media changes passed its repeated 18-second native-media run.

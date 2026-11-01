@@ -581,9 +581,10 @@ av_xtea_le_init
 avpriv_alloc_fixed_dsp
 avpriv_cga_font
 avpriv_dict_set_timestamp
-avpriv_emms_asm
 avpriv_float_dsp_alloc
+avpriv_fopen_utf8
 avpriv_init_lls
+avpriv_open
 avpriv_report_missing_feature
 avpriv_request_sample
 avpriv_scalarproduct_float_c
@@ -592,6 +593,7 @@ avpriv_slicethread_create
 avpriv_slicethread_execute
 avpriv_slicethread_free
 avpriv_solve_lls
+avpriv_tempfile
 avpriv_vga16_font
 avutil_configuration
 avutil_license

@@ -52,3 +52,15 @@ FFmpeg codecs. Its on-screen PIN workflow is absent; adding a decorative PIN
 setting would misrepresent access control, so none was added. Experimental HLS
 proxy playback, USB supervision and music artwork controls are not enabled in
 the normal AirConnect frontend.
+
+`UpdateService` runs explicit WinHTTP release checks and downloads off the UI
+thread. It accepts only stable numeric versions and the exact repository's
+installer URL, caps metadata/download sizes, and verifies GitHub's SHA-256 digest
+with Windows CNG before exposing installation. The native installer waits for
+clean process exit and stages replacements with rollback. Data directories remain
+outside the installation manifest.
+
+Window placement is stored atomically in separate home/viewer files, avoiding
+cross-thread preference overwrites. Restoring adjusts size for DPI and clamps
+off-screen positions to the nearest work area. Native menu/size modal loops use
+a short-lived render timer to consume the same single pending frame slot.

@@ -1,68 +1,70 @@
-# AirConnect 0.1.0
+# AirConnect
 
-Native Windows AirPlay receiver built in C++20 with AMOLED dark as the default.
-The interface uses Win32,
-Direct2D and DirectWrite; video uses Direct3D 11 and audio uses WASAPI.
-There is no web frontend, browser runtime, cloud service, account or telemetry.
+A native AirPlay receiver for Windows 10 and Windows 11 (x64), with an AMOLED
+black interface. C++20, Win32, Direct2D/DirectWrite, Direct3D 11 and WASAPI.
 
-**This is an unsigned validation build. No iPhone or iPad was available during
-development. Live Apple-device discovery, mirroring and audio compatibility
-remain untested. Read VALIDATION.md and LIMITATIONS.md before relying on it.**
+[Download the installer or portable ZIP](https://github.com/MaleficentAd1803/AirConnect/releases/latest)
 
-## Run
+**Development release:** local protocol, codec, graphics, audio and packaging
+tests are documented in [VALIDATION](docs/VALIDATION.md). No Apple device was
+available for the final live mirroring check. See [known limitations](docs/LIMITATIONS.md).
 
-Use the Setup executable for a per-user installation, or extract the complete
-portable ZIP and open `AirConnect.exe`. Keep all supplied DLLs beside the EXE.
-No development tools are required to run the packaged application.
+## Use
 
-The home screen shows the receiver name and the actual discovery result. On an
-iPhone or iPad on the same local network, open Control Center → Screen Mirroring
-and choose the receiver name. A separate native viewer opens when frames arrive.
+Install with Setup, or extract the entire portable ZIP and open `AirConnect.exe`.
+Keep the supplied DLLs beside the executable. No development tools are needed.
 
-Windows may ask about network access. AirPlay needs inbound access on your
-trusted **Private** network. Guest Wi-Fi isolation and VPN routing can prevent
-discovery. Do not forward router ports. The source distribution contains an
-optional, administrator-only `tools/allow-private-firewall.ps1` that creates one
-Private-profile application rule restricted to the local subnet. No firewall
-rule was installed automatically during development.
+On an iPhone or iPad on the same local network, open Control Center → Screen
+Mirroring and choose the receiver name. No companion iOS app is required.
+Discovery and receiving use the local network. Accounts, cloud infrastructure,
+telemetry and recording by default are absent.
 
-## Controls
+Allow network access only on your trusted Private network. Guest Wi-Fi isolation
+and VPN routing may prevent discovery. No router forwarding is needed.
 
-- Settings: receiver name, appearance, stream size and frame-rate hints, hardware
-  decoding, HEVC, VSync, output device, volume/mute, recording and diagnostics.
-- Viewer: fullscreen, screenshot, Record/Stop, Pin, mute, statistics, Disconnect.
-- Double-click or F/F11: toggle fullscreen. Escape: leave fullscreen.
-- R: start/stop recording. S: PNG screenshot. M: mute playback.
-- Close the viewer to hide it. Use Open viewer in the home screen to restore it.
-- Closing the home window keeps receiving by default. Choose Exit in the tray
-  menu to stop all listeners, media workers and advertisements.
+## Viewer
 
-Recording begins only after an explicit Record action. Recordings include
-received audio, preserve their initial canvas through orientation changes, and
-use fragmented MP4 to improve recovery after interruption. A stopped recording
-is finalized before exit. Screenshots preserve the received frame resolution.
-Playback mute does not mute recordings. There is no microphone/system-audio
-capture. Incoming video is re-encoded for recording; compressed passthrough is
-not implemented.
+- One auto-hiding **⋯** menu contains mute, screenshot, recording, fullscreen,
+  always-on-top, fit-to-phone, statistics and disconnect.
+- The normal window follows the incoming phone's aspect ratio and rotation.
+- Double-click or F/F11 toggles fullscreen; Escape exits it.
+- M mutes playback, S saves a PNG, and R starts/stops recording.
+- Main-window and viewer positions and normal sizes survive relaunch. Saved
+  positions are brought back on-screen if a monitor is disconnected.
+- Closing the viewer hides it. Closing the main window keeps receiving by
+  default; choose Exit in the tray menu to shut down completely.
 
-Settings and the DPAPI-encrypted receiver identity live in
-`%LOCALAPPDATA%\AirConnect`. The default capture folder is
-`%USERPROFILE%\Videos\AirConnect`. Uninstall keeps both. Source and build
-instructions are in the companion source archive and BUILD.md.
+Screenshots retain the incoming resolution. Explicitly initiated recordings
+include received audio and use fragmented MP4. Recording keeps its initial
+canvas when the phone rotates; playback mute does not mute the recording.
 
-## Statistics
+## Updates
 
-Receive/Decode/Present are separate measured rates. Present counts successful
-DXGI presentations, not fabricated frames. A hidden/occluded window can render
-frames without presenting them. Local processing latency starts after the
-encrypted mirror-frame body arrives at the PC; it excludes capture, network
-transit and exact scan-out. CPU/GPU utilization is not estimated or invented.
+To upgrade an installed **0.1.0** copy, exit it from the tray and run the new
+installer once. Uninstallation is unnecessary; settings, identity and recordings
+are preserved. Stale files listed by the old installer are removed safely.
 
-## License and provenance
+From **0.2.0** onward: Settings → About → Check for updates → Download update →
+Install and restart. Downloads are verified against GitHub's SHA-256 digest.
+The update waits for the receiver to shut down and finish recording before
+replacing files. A failed file replacement restores the previous files.
+Checks and downloads occur only when requested. Portable users can check for
+releases and replace their extracted application folder with the new portable ZIP.
 
-AirConnect is GPL-3.0. It retains the AirPlay-Windows protocol implementation
-at `f739810e35887cf572b69275a52dc6f32323d65d`. UxPlay was inspected as a
-secondary reference. See THIRD_PARTY_NOTICES.md and the complete AirConnect
-source archive. Public redistribution needs the dependency-source/license
-review described in LIMITATIONS.md; the current packages are for local
-validation on this PC. DRM-protected streaming services are outside scope.
+## Data and diagnostics
+
+Preferences, encrypted receiver identity, window placement and logs live in
+`%LOCALAPPDATA%\AirConnect`. Recordings default to
+`%USERPROFILE%\Videos\AirConnect`. Upgrades and uninstall preserve these folders.
+
+Optional statistics distinguish received, decoded, rendered and actually
+presented frames. Local processing time excludes sender capture and network
+transit. CPU/GPU utilization and performance figures are not invented.
+
+## Build and license
+
+See [BUILD](docs/BUILD.md), [architecture](docs/ARCHITECTURE.md) and
+[third-party notices](THIRD_PARTY_NOTICES.md). AirConnect is GPL-3.0 and retains
+AirPlay-Windows commit `f739810e35887cf572b69275a52dc6f32323d65d`.
+Every release includes application and corresponding dependency source archives.
+This is an unofficial receiver; protected streaming-service content is unsupported.

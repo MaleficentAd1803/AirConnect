@@ -8,3 +8,9 @@ media-test-output/
 dependencies/lib/*.a
 setup.inf
 setup.rpt
+
+__pycache__/
+*.dpapi
+*.dmp
+*.mp4
+AirConnect-*.png

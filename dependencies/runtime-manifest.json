@@ -2,26 +2,26 @@
   "airplay_windows_commit": "f739810e35887cf572b69275a52dc6f32323d65d",
   "uxplay_reference_commit": "f40b121b6b932fb8ed138ce2e492b0a77cf284a3",
   "libplist_source": "2.4.0",
-  "ffmpeg_version": "n7.1.1",
-  "ffmpeg_configuration": "--prefix=/D/a/obs-deps/obs-deps/windows/obs-ffmpeg-x64 --arch=x86_64 --toolchain=msvc --extra-cflags='-D_WINDLL -MD -D_WIN32_WINNT=0x0A00' --extra-cxxflags='-MD -D_WIN32_WINNT=0x0A00' --extra-ldflags='-APPCONTAINER:NO -MACHINE:x64' --pkg-config=pkg-config --target-os=win64 --enable-libaom --enable-libsvtav1 --enable-libtheora --enable-libmp3lame --enable-w32threads --enable-version3 --enable-gpl --enable-libx264 --enable-libopus --enable-libvorbis --enable-libvpx --enable-librist --enable-libsrt --enable-shared --enable-zlib --disable-static --disable-libjack --disable-indev=jack --disable-sdl2 --disable-doc --disable-postproc --pkg-config-flags=--static --disable-debug",
+  "ffmpeg_version": "7.1.1",
+  "ffmpeg_configuration": "--prefix='C:/Users/tamas/Desktop/AirConnect/build/media-sdk' --arch=x86_64 --target-os=mingw32 --cc=gcc --cxx=g++ --enable-shared --disable-static --disable-programs --disable-doc --disable-debug --disable-everything --disable-autodetect --disable-avfilter --disable-avdevice --disable-postproc --enable-gpl --enable-version3 --enable-w32threads --enable-libx264 --enable-ffnvcodec --enable-nvenc --enable-d3d11va --enable-dxva2 --enable-schannel --enable-decoder='h264,hevc,aac,alac,pcm_s16le,pcm_s16be,mp3' --enable-encoder='libx264,h264_nvenc,hevc_nvenc,aac,alac,pcm_s16le' --enable-parser='h264,hevc,aac,mpegaudio' --enable-hwaccel='h264_d3d11va,h264_d3d11va2,hevc_d3d11va,hevc_d3d11va2' --enable-demuxer='mov,mpegts,hls,aac,mp3' --enable-muxer='mp4,mov,adts' --enable-protocol='file,http,https,tcp,tls,crypto' --enable-network --enable-swscale --enable-swresample --extra-ldflags=-static-libgcc --pkg-config=pkg-config",
   "ffmpeg_license": "GPL version 3 or later",
   "openssl_version": "OpenSSL 3.5.5 27 Jan 2026",
-  "origin": "Existing local OBS and Git runtimes; Microsoft app-local runtimes from System32",
+  "origin": "Project-built minimal FFmpeg/x264; pinned Git for Windows OpenSSL 3.5.5 runtime",
   "files": [
     {
       "name": "avcodec-61.dll",
-      "bytes": 37861248,
-      "sha256": "fa26d83d428e6d54b63063dd87457a6325999db0ec96c485893ed2e67ec9924f"
+      "bytes": 5137920,
+      "sha256": "7a963d6fee3a13da166ab13019fd5f7f4dd437d45e6967b44de0b69d540e8834"
     },
     {
       "name": "avformat-61.dll",
-      "bytes": 2379648,
-      "sha256": "fbdb503ab5ec037d7df3418c8fad2c1cc6d1e60f4f25a8315a5b9b1870830aff"
+      "bytes": 822272,
+      "sha256": "d3729893b1db935f73f746d2ab5f6ef896026dbc20aa38e4b0355b92d847f7d6"
     },
     {
       "name": "avutil-59.dll",
-      "bytes": 910720,
-      "sha256": "42538af0207d32e105544751cf1145784ad540a871cc88c7dd2f31d2e850d322"
+      "bytes": 1105920,
+      "sha256": "d1ba8ff0fd858346786e2e4c1f3aec6f0d7a961f30abc571a9379fcaea6a6502"
     },
     {
       "name": "libcrypto-3-x64.dll",
@@ -29,49 +29,14 @@
       "sha256": "bcf29fafe56248c4a20aa721f496243ff3fdd21624d297d6d4d2d227e8a5b576"
     },
     {
-      "name": "librist.dll",
-      "bytes": 220032,
-      "sha256": "a56a24a3e34df6f7585a88e2f89d2988ccadc61c54f55278ead969422bdbb700"
-    },
-    {
-      "name": "libx264-164.dll",
-      "bytes": 2233216,
-      "sha256": "2f686b9665783c682e377abce820efc76080a224fe0c85761e7f2ac5a516431d"
-    },
-    {
-      "name": "msvcp140.dll",
-      "bytes": 643512,
-      "sha256": "7c26614e1d733892c2deac7e245ce115504b1d80592dd0a01b08e3e5a55f89ca"
-    },
-    {
-      "name": "srt.dll",
-      "bytes": 746368,
-      "sha256": "d5af1e01f548d95edf685cd5bf059fe7dc9741523bf1f7cd8defbedbdb7eacfa"
-    },
-    {
       "name": "swresample-5.dll",
-      "bytes": 132992,
-      "sha256": "15923fc8fb32ea2f8f5454000bdeb7cbabcfe4c4f491ffe65570f116d32f8edf"
+      "bytes": 121856,
+      "sha256": "4207753fd2dab878e9fbe909702de8a3645c2a5e648d0439433424320727440d"
     },
     {
       "name": "swscale-8.dll",
-      "bytes": 631168,
-      "sha256": "a29c105a5c09c0fe59c7b76087acd7b09b6177f912914d548c2b3edbf3a254b4"
-    },
-    {
-      "name": "vcruntime140.dll",
-      "bytes": 178616,
-      "sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7"
-    },
-    {
-      "name": "vcruntime140_1.dll",
-      "bytes": 50112,
-      "sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e"
-    },
-    {
-      "name": "zlib.dll",
-      "bytes": 93568,
-      "sha256": "258363896e6b48b2d6c54eec3be59e5334f125d3965d54e82cb71fc1ec59b6b8"
+      "bytes": 649728,
+      "sha256": "7f1e50b059a60c766a8b64b118a99c556886e727ec8ed852e7f7280337be2054"
     }
   ]
 }

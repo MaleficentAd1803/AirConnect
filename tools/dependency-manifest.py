@@ -24,7 +24,7 @@ record={
  "ffmpeg_configuration":call("avcodec-61.dll","avcodec_configuration"),
  "ffmpeg_license":call("avcodec-61.dll","avcodec_license"),
  "openssl_version":crypto.OpenSSL_version(0).decode(),
- "origin":"Existing local OBS and Git runtimes; Microsoft app-local runtimes from System32",
+ "origin":"Project-built minimal FFmpeg/x264; pinned Git for Windows OpenSSL 3.5.5 runtime",
  "files":[{"name":p.name,"bytes":p.stat().st_size,"sha256":hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(runtime.glob("*.dll"))]
 }
 (root/"dependencies"/"runtime-manifest.json").write_text(json.dumps(record,indent=2),encoding="utf-8")
