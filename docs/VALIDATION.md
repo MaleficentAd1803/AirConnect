@@ -101,3 +101,6 @@ project-local validation environment. All nine malformed-input/connection-cap
 checks passed again, and the process exited with code 0. The final Release CTest
 run passed all five suites in 42.91 seconds; Debug passed all five suites and the
 latest media changes passed its repeated 18-second native-media run.
+
+Public asset and native updater download checks are recorded in
+[the post-publication verification](RELEASE-VERIFICATION-0.2.0.md).

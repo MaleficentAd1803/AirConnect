@@ -15,7 +15,7 @@ try {
   if($changes) { throw 'Commit the reviewed source and version before publishing' }
   git -c "safe.directory=$gitRoot" tag "v$version"
   if($LASTEXITCODE) { throw 'Release tag creation failed' }
-  git -c "safe.directory=$gitRoot" push origin HEAD:main "v$version"
+  git -c "safe.directory=$gitRoot" -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin HEAD:main "v$version"
   if($LASTEXITCODE) { throw 'Git push failed' }
   $assets=@(Get-ChildItem -LiteralPath dist -File | Where-Object { $_.Name -like "AirConnect-$version-*.zip" -or $_.Name -eq "AirConnect-$version-Setup.exe" -or $_.Name -eq 'SHA256SUMS.txt' } | Select-Object -ExpandProperty FullName)
   gh release create "v$version" @assets --repo MaleficentAd1803/AirConnect --title "AirConnect $version" --notes-file docs/RELEASE.md --verify-tag
